@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #111;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.logo {
+    width: 200px;
+    height: 100px; /* This maintains a 2:1 width-to-height ratio */
+    object-fit: contain;
+    cursor: pointer; /* Makes the logo clickable */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.sidebar ul li {
+    padding: 8px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+.sidebar-image-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar-image {
+    width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer; /* Makes the sidebar image clickable */
+}
+
+.sidebar-image-text {
+    color: white;
+    font-size: 14px;
+}
+
+.content {
+    margin-left: 250px; /* Same width as the sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #9EACC6;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.player {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.control-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.control-button:hover {
+    background-color: #575757;
+}
+
+.volume-control {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.sidebar-hidden .sidebar {
+    transform: translateX(-250px);
+}
+
+.sidebar-hidden .content {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        transform: translateX(-100%);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+    }
+
+    .logo-container, .sidebar ul, .sidebar-image-container {
+        display: none; /* Hide elements in mobile view */
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 60px; /* Add padding to avoid content being hidden under the fixed header */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button in mobile view */
+    }
+
+    .sidebar-open .sidebar {
+        transform: translateX(0);
+    }
+}
